@@ -1,12 +1,8 @@
 import React from "react";
-import axios from "../api/axios";
 
 const Home: React.FC = () => {
-
-    
-
     return(
-        <h1>Home</h1>
+        <h1>Environment variable REGISTRY_URL not set!</h1>
     );
 };
 

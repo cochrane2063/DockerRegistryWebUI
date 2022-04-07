@@ -6,6 +6,37 @@ a {
   text-decoration: none;
 }
 
+.login .grid-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  margin-top: 20%;
+  max-width: 40% !important;
+}
+
+.login .grid-container > * {
+  width: 98%;
+  margin: 0.5% 0;
+}
+
+.login .grid-container .login-label {
+  display: inline-block;
+  text-align: center;
+  margin: 5% 0;
+  font-size: 200%;
+}
+
+.login .grid-container .login-btn {
+  margin: 5% 0;
+  width: 40%;
+}
+
+.login .grid-container .skip-login-btn {
+  margin: 5% 0;
+  background-color: #ed7f88;
+}
+
 .get-url {
   max-width: 70%;
   margin: auto;

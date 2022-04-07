@@ -2,8 +2,10 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
 interface loginInfo {
-  uuid: string;
+  loginNeeded: boolean;
   isLoggedIn: boolean;
+  username: string;
+  password: string;
 }
 
 const useAuth = () => {

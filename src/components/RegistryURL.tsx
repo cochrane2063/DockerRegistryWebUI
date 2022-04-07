@@ -16,8 +16,7 @@ const RegistryURL: React.FC = () => {
         e.preventDefault();
 
         try {
-            let axoisInstance = axios(registryURL);
-            // axoisInstance.interceptors.response.use(
+            // axios.interceptors.response.use(
             //     response => response,
             //     error => {
             //         if (error.response.status === 401) {
@@ -28,7 +27,7 @@ const RegistryURL: React.FC = () => {
             //         return error;
             //     }
             // );
-            let response = await axoisInstance.get(
+            let response = await axios.get(
                 `/`
             );
             console.log(registryURL);
