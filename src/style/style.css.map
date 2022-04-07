@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AG8CA,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;CAAG;;AAElB,AAAA,CAAC,CAAC;EACE,eAAe,EAAE,IAAI;CAAG",
+    "mappings": "AG8CA,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;CAAG;;AAElB,AAAA,CAAC,CAAC;EACE,eAAe,EAAE,IAAI;CAAG;;AMlD5B,AAAA,QAAQ,CAAC;EACL,SAAS,EAAE,GAAG;EACd,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,GAAG;CAEU;;AAL7B,AAII,QAJI,CAIJ,eAAe,CAAC;EACZ,UAAU,EAAE,IAAI;CAAG",
     "sources": [
         "style.sass",
         "_variables.sass",
@@ -10,7 +10,8 @@
         "layouts/_header.sass",
         "layouts/_footer.sass",
         "modules/_modules-dir.sass",
-        "modules/_sectionMain.sass"
+        "modules/_sectionMain.sass",
+        "modules/_URL.sass"
     ],
     "names": [],
     "file": "style.css"

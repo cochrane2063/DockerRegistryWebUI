@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: "" + "/v2"
-});
+export default (url: string) => {
+  return axios.create({
+    baseURL: url + "/v2"
+  })
+};

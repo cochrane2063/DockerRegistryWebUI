@@ -1,10 +1,9 @@
 import React from "react";
+import RegistryURL from "./RegistryURL";
 
 const Home: React.FC = () => {
     return(
-        <>
-            <p>Temp</p>
-        </>
+        <RegistryURL />
     );
 };
 
