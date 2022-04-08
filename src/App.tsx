@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CheckENVRoute from "./CheckENVRoute";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import Login from "./components/Login";
 import ProtectedRoute from "./ProtectedRoute";
 
