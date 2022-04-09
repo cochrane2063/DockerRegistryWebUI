@@ -1,7 +1,4 @@
-interface Tag {
-    label: string;
-    architecture: string;
-}
+import Tag from "./Tag";
 
 interface Repository {
     name: string;
