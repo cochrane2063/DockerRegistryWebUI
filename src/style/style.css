@@ -6,6 +6,11 @@ a {
   text-decoration: none;
 }
 
+.sectionHome .repositoryList {
+  max-width: 70%;
+  margin: auto;
+}
+
 .login .grid-container {
   -webkit-box-align: center;
       -ms-flex-align: center;

@@ -42,8 +42,10 @@ const Login: React.FC = () => {
                 //     'Authorization': 'Basic dXNlcjp1c2Vy'
                 // }
                 auth: {
-                    username: username,
-                    password: password
+                    // username: username,
+                    // password: password
+                    username: "pusher",
+                    password: "pusher"
                 }
             }
             );
@@ -55,8 +57,10 @@ const Login: React.FC = () => {
             } else {
                 setAuth["loginNeeded"] = true
                 setAuth["isLoggedIn"] = true;
-                setAuth["username"] = username;
-                setAuth["password"] = password;
+                // setAuth["username"] = username;
+                // setAuth["password"] = password;
+                setAuth["username"] = "pusher";
+                setAuth["password"] = "pusher";
                 setHasError(false);
                 navigate(from, { replace: true });
                 console.log("logged in!");

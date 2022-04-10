@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { List, ListItemButton, Box, Typography } from "@mui/material";
+import { List } from "@mui/material";
+import RepositoryItem from "./RepositoryEntry";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
 import Tag from "../../interfaces/Tag";
@@ -112,20 +113,15 @@ const Home: React.FC = () => {
     }, []);
 
     return(
-        <List style={{ maxHeight: "100%", overflow: "auto" }}>
-            {repositories.map((repository: Repository) => {
-                return(
-                    <ListItemButton 
-                        component="a" 
-                    >
-                        <Box sx={{ display: "flex", flexDirection: "column" }}>
-                            <Typography color="black" variant="h5">{repository.name}</Typography>
-                            <Typography color="grey" variant="h6">{repository.tags.map((tag: Tag) => (tag.created ? tag.created.toDateString() : "Time created not available")).join(" ")}</Typography>
-                        </Box>
-                    </ListItemButton>
-                );
-            })}
-        </List>
+        <div className="sectionHome">
+            <List className="repositoryList" style={{ maxHeight: "100%", overflow: "auto" }}>
+                {repositories.map((repository: Repository) => {
+                    return(
+                        <RepositoryItem repository={repository} />
+                    );
+                })}
+            </List>
+        </div>
     );
 };
 
