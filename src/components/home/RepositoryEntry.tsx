@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ListItemButton, Grid, ListItemText } from "@mui/material";
 import Tag from "../../interfaces/Tag";
 import Repository from "../../interfaces/Repositoriy";
@@ -12,7 +13,8 @@ const RepositoryItem: React.FC<Props> = (props: Props) => {
     
     return (
         <ListItemButton 
-            component="a" 
+            component={Link}
+            to={"/repository/" + props.repository.name}
         >
             {/* <Box sx={{ display: "flex", flexDirection: "column" }}>
             </Box> */}

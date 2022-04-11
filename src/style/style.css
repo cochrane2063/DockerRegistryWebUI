@@ -10,6 +10,10 @@ a {
   margin: 0;
 }
 
+.navbar .homeLink {
+  color: white;
+}
+
 .navbar .centerText {
   text-align: center;
   width: 90%;

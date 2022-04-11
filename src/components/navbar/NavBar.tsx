@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem , Tooltip, Avatar, Snackbar, Alert} from "@mui/material";
 import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
@@ -152,10 +153,12 @@ const NavBar: React.FC = () => {
         <Container maxWidth={false} sx={{ m: 0, width: '100%' }}>
           <Toolbar disableGutters>
             <Typography
+              className="homeLink"
               variant="h6"
               noWrap
-              component="div"
-              sx={{ mr: 2, display: 'flex' }}
+              component={NavLink}
+              to="/"
+              sx={{ mr: 2, display: 'flex', textDecoration: "none" }}
             >
               Docker Registry
             </Typography>

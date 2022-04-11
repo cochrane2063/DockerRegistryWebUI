@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CheckENVRoute from "./CheckENVRoute";
 import Home from "./components/home/Home";
 import Login from "./components/Login";
+import NotFound from "./components/NotFound";
 import RepositoryInfo from "./components/repositoryInfo/RepositoryInfo";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Home />} />
             <Route path="/repository/*" element={<RepositoryInfo />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Route>
       </Routes>
