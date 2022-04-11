@@ -6,6 +6,15 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  margin: 0;
+}
+
+.navbar .centerText {
+  text-align: center;
+  width: 90%;
+}
+
 .sectionHome .repositoryList {
   max-width: 70%;
   margin: auto;

@@ -6,12 +6,14 @@ import axios from "../../api/axios";
 import useAuth from "../../hooks/useAuth";
 import Tag from "../../interfaces/Tag";
 import Repository from "../../interfaces/Repositoriy";
+import Layer from "../../interfaces/Layer";
 
 const Home: React.FC = () => {
     const auth = useAuth();
 
     const [repositories, setRepositories] = useState<Repository[]>([]);
 
+    auth['repositories'] = repositories;
     const getTagInfo = async(newRepositories: Repository[]) => {
         let promises: Promise<void>[] = [];
         newRepositories.forEach((repository: Repository) => {
@@ -28,7 +30,16 @@ const Home: React.FC = () => {
                         }
                     }
                 ).then((response) => {
+                    tag.schemaVersion = response?.data['schemaVersion'];
+                    tag.mediaType = response?.data['mediaType'];
                     tag.digest = response?.headers['docker-content-digest'];
+                    tag.config = response?.data?.config;
+                    tag.layers = response?.data?.layers;
+                    let size = 0;
+                    response?.data?.layers.forEach((layer: Layer) => {
+                        size += layer.size;
+                    });
+                    tag.size = size;
                     return axios.get(
                         "/" + repository.name + "/blobs/" + response?.data?.config['digest'],
                         {
@@ -71,6 +82,11 @@ const Home: React.FC = () => {
                         architecture: "",
                         os: "",
                         created: undefined,
+                        schemaVersion: undefined,
+                        mediaType: "",
+                        config: undefined,
+                        layers: undefined,
+                        size: undefined,
                         digest: ""
                     }
                     tags.push(tag);

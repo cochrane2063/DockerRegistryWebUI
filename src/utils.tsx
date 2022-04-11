@@ -15,6 +15,10 @@ const checkValidURL = async (url: string) => {
     return true;
 }
 
+const printTwoDecimalPlaces = (num: number): string => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+}
+
 const printTimePassed = (date: Date): string => {
     const currentTime = Date.now();
     const secondsPassed = (currentTime - date.getTime()) / 1000;
@@ -37,4 +41,12 @@ const printTimePassed = (date: Date): string => {
     }
 };
 
-export { checkValidURL , printTimePassed };
+const printSize = (sizeInByte: number): string => {
+    if (sizeInByte < 1073741824) {
+        return printTwoDecimalPlaces(sizeInByte / 1048576) + " MiB";
+    } else {
+        return printTwoDecimalPlaces(sizeInByte / 1073741824) + " GiB";
+    }
+};
+
+export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize };

@@ -1,4 +1,5 @@
 import { useLocation, Outlet, Navigate } from "react-router-dom";
+import NavBar from "./components/navbar/NavBar";
 import useAuth from "./hooks/useAuth";
 
 const ProtectedRoute = () => {
@@ -7,6 +8,7 @@ const ProtectedRoute = () => {
 
   return ((auth.loginNeeded !== undefined && !auth.loginNeeded) || auth?.isLoggedIn) ? (
     <>
+      <NavBar />
       <Outlet />
     </>
   ) : (
