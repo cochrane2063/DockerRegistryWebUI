@@ -3,9 +3,10 @@ import NavBar from "./components/navbar/NavBar";
 import useAuth from "./hooks/useAuth";
 
 const ProtectedRoute = () => {
-  const auth = useAuth();
+  const { auth } = useAuth();
   const location = useLocation();
 
+  
   return ((auth.loginNeeded !== undefined && !auth.loginNeeded) || auth?.isLoggedIn) ? (
     <>
       <NavBar />

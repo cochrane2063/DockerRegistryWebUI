@@ -1,26 +1,32 @@
 import { createContext, useState } from "react";
-import Repository from "../interfaces/Repositoriy";
 
-interface loginInfo {
+export interface loginInfo {
   loginNeeded: boolean;
   isLoggedIn: boolean;
   username: string;
   password: string;
-  repositories: Repository[];
 }
 
-const AuthContext = createContext<loginInfo>({
-  loginNeeded: true,
-  isLoggedIn: false,
-  username: "",
-  password: "",
-  repositories: []
+interface MyAuthState {
+  auth: loginInfo;
+  setAuth: React.Dispatch<React.SetStateAction<loginInfo>>
+}
+
+
+const AuthContext = createContext<MyAuthState>({
+  auth: {
+    loginNeeded: true,
+    isLoggedIn: false,
+    username: "",
+    password: ""
+  },
+  setAuth: () => {}
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [auth] = useState<loginInfo>({ loginNeeded: true, isLoggedIn: false, username: "", password: "", repositories: [] });
+  const [auth, setAuth] = useState<loginInfo>({ loginNeeded: true, isLoggedIn: false, username: "", password: "" });
 
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{auth, setAuth}}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContext;

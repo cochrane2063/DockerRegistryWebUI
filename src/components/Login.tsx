@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { InputLabel, Stack, Typography } from "@mui/material";
+import { InputLabel, Stack } from "@mui/material";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -12,7 +12,7 @@ interface LocationState {
   from: { pathname: string };
 }
 const Login: React.FC = () => {
-    const setAuth = useAuth();
+    const { setAuth } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,8 +24,12 @@ const Login: React.FC = () => {
     const [hasError, setHasError] = useState(false);
 
     const handleSkipLogin = () => {
-        setAuth["loginNeeded"] = false;
-        setAuth["isLoggedIn"] = false;
+        setAuth({
+            loginNeeded: false,
+            isLoggedIn: false,
+            username: "",
+            password: ""
+        });
         navigate(from, { replace: true });
     }
 
@@ -55,12 +59,15 @@ const Login: React.FC = () => {
             if (status === undefined) {
                 setHasError(true);
             } else {
-                setAuth["loginNeeded"] = true
-                setAuth["isLoggedIn"] = true;
-                // setAuth["username"] = username;
-                // setAuth["password"] = password;
-                setAuth["username"] = "pusher";
-                setAuth["password"] = "pusher";
+                setAuth({
+                    loginNeeded: true,
+                    isLoggedIn: true,
+                    // username: username,
+                    // password: password,
+                    username: "pusher",
+                    password: "pusher"
+                });
+
                 setHasError(false);
                 navigate(from, { replace: true });
                 console.log("logged in!");
