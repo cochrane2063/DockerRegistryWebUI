@@ -24,6 +24,36 @@ a {
   margin: auto;
 }
 
+.repositoryInfo .repositoryDetail {
+  margin: 5%;
+  padding: 15px;
+}
+
+.repositoryInfo .repositoryDetail .lines {
+  margin-bottom: 10px;
+}
+
+.repositoryInfo .repositoryDetail .clock-icon {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.repositoryInfo .repositoryDetail .commandDisplay {
+  line-height: 300%;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin-top: 5px;
+}
+
+.repositoryInfo .tagsDetail {
+  margin: 5%;
+  padding: 15px;
+}
+
+.repositoryInfo .tagsDetail .lines {
+  margin-bottom: 10px;
+}
+
 .login .grid-container {
   -webkit-box-align: center;
       -ms-flex-align: center;

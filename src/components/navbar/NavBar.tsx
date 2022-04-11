@@ -9,6 +9,7 @@ import { loginInfo } from "../../context/AuthProvider";
 import Tag from "../../interfaces/Tag";
 import Repository from "../../interfaces/Repositoriy";
 import Layer from "../../interfaces/Layer";
+import { getHostNameFromURL } from "../../utils";
 
 const NavBar: React.FC = () => {
     const { auth } = useAuth();
@@ -22,8 +23,7 @@ const NavBar: React.FC = () => {
 
     const handleClick = () => {
       const url = process.env.REGISTRY_URL ? process.env.REGISTRY_URL : "";
-      const urlSplit = url.split('/');
-      navigator.clipboard.writeText(urlSplit[urlSplit.length - 1]);
+      navigator.clipboard.writeText(getHostNameFromURL(url));
       setSnackbarOpen(true);
     };
 

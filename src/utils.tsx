@@ -15,6 +15,11 @@ const checkValidURL = async (url: string) => {
     return true;
 }
 
+const getHostNameFromURL = (url: string): string => {
+    const urlSplit = url.split('/');
+    return urlSplit[urlSplit.length - 1];
+}
+
 const printTwoDecimalPlaces = (num: number): string => {
     return (Math.round(num * 100) / 100).toFixed(2);
 }
@@ -49,4 +54,4 @@ const printSize = (sizeInByte: number): string => {
     }
 };
 
-export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize };
+export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL };
