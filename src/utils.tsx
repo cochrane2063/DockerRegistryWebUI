@@ -1,4 +1,6 @@
 import axios from "./api/axios"
+import { FcLinux } from "react-icons/fc";
+import { FaWindows } from "react-icons/fa";
 
 const checkValidURL = async (url: string) => {
     try {
@@ -54,4 +56,14 @@ const printSize = (sizeInByte: number): string => {
     }
 };
 
-export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL };
+const PrintOSIcon: React.FC<{ os: string }> = ({ os }) => {
+    if (os === "linux") {
+        return <FcLinux />
+    } else if (os === "windows") {
+        return <FaWindows />
+    } else {
+        return <div>os</div>;
+    }
+}
+
+export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL, PrintOSIcon };

@@ -24,6 +24,11 @@ a {
   margin: auto;
 }
 
+.repositoryInfo {
+  max-width: 70%;
+  margin: auto;
+}
+
 .repositoryInfo .repositoryDetail {
   margin: 5%;
   padding: 15px;
@@ -52,6 +57,15 @@ a {
 
 .repositoryInfo .tagsDetail .lines {
   margin-bottom: 10px;
+}
+
+.repositoryInfo .tagsDetail .moreBtn {
+  color: #1976d2;
+  cursor: pointer;
+}
+
+.repositoryInfo .tagsDetail .moreBtn:focus {
+  color: purple;
 }
 
 .login .grid-container {

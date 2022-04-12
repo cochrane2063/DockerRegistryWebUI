@@ -13,7 +13,7 @@ import { getHostNameFromURL } from "../../utils";
 
 const NavBar: React.FC = () => {
     const { auth } = useAuth();
-    const { setRepositories } = useRepositories();
+    const { setIsFetched, setRepositories } = useRepositories();
     const [anchorElUser, setAnchorElUser] = React.useState<(EventTarget & HTMLButtonElement) | null>(null);
     const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   
@@ -110,6 +110,11 @@ const NavBar: React.FC = () => {
                   tags.push(tag);
               });
               repository.tags = tags;
+          }).catch((err) => {
+            const index = newRepositories.indexOf(repository);
+            if (index > -1) {
+              newRepositories.splice(index, 1);
+            }
           });
           promises.push(promise);
       });
@@ -140,6 +145,7 @@ const NavBar: React.FC = () => {
       await getTags(newRepositories, auth)
       
       setRepositories(newRepositories);
+      setIsFetched(true);
       // setRepositories(newRepositories);
 
     };
