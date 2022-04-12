@@ -40,6 +40,10 @@ const RepositoryInfo: React.FC = () => {
         navigator.clipboard.writeText(generatePullCommand(hostName,tagName));
         setSnackbarOpen(true);
     };
+    const handleDigestClick = (digest: string) => {
+        navigator.clipboard.writeText(digest);
+        setSnackbarOpen(true);
+    };
 
     const handleClose = () => {
         setSnackbarOpen(false);
@@ -231,12 +235,21 @@ const RepositoryInfo: React.FC = () => {
                                                     <List>
                                                         <ListItemButton 
                                                             className="lines"
-                                                            component={Link}
-                                                            to={"/repository/" + repository.name + "/" + tag.label}
+                                                            // component={Link}
+                                                            // to={"/repository/" + repository.name + "/" + tag.label}
+                                                            onClick={() => (handleDigestClick(tag.digest))}
                                                         >
                                                             <Grid container>
                                                                 <Grid item sm={5}>
-                                                                    <ListItemText style={{color: '#007bff'}} primary={digestDisplay(tag.digest)} />
+                                                                    <Tooltip 
+                                                                        className="tooltip"
+                                                                        title={
+                                                                            tag.digest
+                                                                        } 
+                                                                        placement="bottom-start" 
+                                                                    >
+                                                                        <ListItemText style={{color: '#007bff'}} primary={digestDisplay(tag.digest)} />
+                                                                    </Tooltip>
                                                                 </Grid>
                                                                 <Grid item sm={4}>
                                                                     <ListItemText primary={tag.os + "/" +tag.architecture} />
