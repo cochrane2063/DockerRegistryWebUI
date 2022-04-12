@@ -25,7 +25,13 @@ a {
 }
 
 .repositoryInfo {
-  max-width: 70%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.repositoryInfo .wrapperAlwaysDisplayed, .repositoryInfo .wrapperWithCheckBox {
+  width: 70%;
   margin: auto;
 }
 
@@ -105,8 +111,8 @@ a {
 }
 
 @media (max-width: 1199px) {
-  .repositoryInfo {
-    max-width: 90%;
+  .repositoryInfo .wrapperAlwaysDisplayed, .repositoryInfo .wrapperWithCheckBox {
+    width: 90%;
   }
 }
 
