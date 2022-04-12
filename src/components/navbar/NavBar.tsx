@@ -73,7 +73,17 @@ const NavBar: React.FC = () => {
                       tag.architecture = res?.data?.architecture;
                       tag.os = res?.data?.os;
                       tag.created = new Date(res?.data?.created);
+                  }).catch((err) => {
+                    const index = repository.tags.indexOf(tag);
+                    if (index > -1) {
+                      repository.tags.splice(index, 1);
+                    }
                   });
+              }).catch((err) => {
+                const index = repository.tags.indexOf(tag);
+                if (index > -1) {
+                  repository.tags.splice(index, 1);
+                }
               });
               promises.push(promise);
           });

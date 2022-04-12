@@ -1,4 +1,5 @@
 import axios from "./api/axios"
+import React from "react";
 import { FcLinux } from "react-icons/fc";
 import { FaWindows } from "react-icons/fa";
 
@@ -16,6 +17,14 @@ const checkValidURL = async (url: string) => {
     }
     return true;
 }
+
+const toUpperFirst= (s: string):string => {
+    if (s.length > 0) {
+        return s[0].toUpperCase() + s.substring(1);
+    } else {
+        return s;
+    }
+};
 
 const getHostNameFromURL = (url: string): string => {
     const urlSplit = url.split('/');
@@ -56,14 +65,14 @@ const printSize = (sizeInByte: number): string => {
     }
 };
 
-const PrintOSIcon: React.FC<{ os: string }> = ({ os }) => {
+const PrintOSIcon: React.FC<{ className: string, os: string }> = ({ className, os }) => {
     if (os === "linux") {
-        return <FcLinux />
+        return <FcLinux className={className} />
     } else if (os === "windows") {
-        return <FaWindows />
+        return <FaWindows className={className} />
     } else {
-        return <div>os</div>;
+        return <div className={className}>os</div>;
     }
 }
 
-export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL, PrintOSIcon };
+export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL, PrintOSIcon, toUpperFirst };

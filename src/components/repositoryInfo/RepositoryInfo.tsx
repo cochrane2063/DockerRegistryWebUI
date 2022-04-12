@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { ListItemButton, Button, Box, Card, CardContent, Typography, CardActions, Grid, List, ListItemText, Snackbar, Alert } from "@mui/material";
+import { ListItemButton, Button, Box, Card, CardContent, Typography, CardActions, Grid, List, ListItemText, Snackbar, Alert, Tooltip } from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import useRepositories from "../../hooks/useRepositories";
 import Tag from "../../interfaces/Tag";
 import Repository from "../../interfaces/Repositoriy";
-import { getHostNameFromURL, printSize, printTimePassed, PrintOSIcon } from "../../utils";
+import { getHostNameFromURL, printSize, printTimePassed, PrintOSIcon, toUpperFirst } from "../../utils";
 import RepoNotFound from "./RepoNotFound"
 import Loading from "../Loading";
 
@@ -44,7 +44,7 @@ const RepositoryInfo: React.FC = () => {
                             Word of the Day
                         </Typography> */}
                         <Grid container>
-                            <Grid item lg={6} sm={12}>
+                            <Grid item lg={6} md={12}>
                                 <Typography className="lines" variant="h5" component="div">
                                     {repository.name}
                                 </Typography>
@@ -53,7 +53,7 @@ const RepositoryInfo: React.FC = () => {
                                     {"Last updated: " + repository.tags.filter((tag: Tag) => (tag.label === "latest")).map((tag: Tag) => (tag.created ? printTimePassed(tag.created) : "")).join(" ")}
                                 </Typography>
                             </Grid>
-                            <Grid item lg={6} sm={12}>
+                            <Grid item lg={6} md={12}>
                                 <Box sx={{ display: "flex", flexDirection: "column" }}>
                                     <Typography className="lines" variant="h6">
                                         Docker commands
@@ -112,13 +112,33 @@ const RepositoryInfo: React.FC = () => {
                                         <ListItemText primary={tag.label} />
                                     </Grid>
                                     <Grid item sm={3}>
-                                        <ListItemText primary={<PrintOSIcon os={tag.os} />} />
+                                        <Tooltip 
+                                            title={
+                                                <>
+                                                    <div>{"Operating System: " + toUpperFirst(tag.os)}</div>
+                                                        <br />
+                                                    <div>{"Architecture: " + tag.architecture}</div>
+                                                </>
+                                            } 
+                                            placement="bottom" 
+                                            arrow
+                                        >
+                                            <ListItemText className="iconWrapper" primary={<PrintOSIcon className="icon" os={tag.os} />} />
+                                        </Tooltip>
                                     </Grid>
                                     <Grid item sm={2}>
                                         <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary={tag.size ? printSize(tag.size) : "---"} />
                                     </Grid>
                                     <Grid item sm={2}>
-                                        <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary={tag.created ? printTimePassed(tag.created) : "---"} />
+                                        <Tooltip 
+                                            title={
+                                                tag.created ? (tag.created.toLocaleString()) : "---"
+                                            } 
+                                            placement="bottom-end" 
+                                            arrow
+                                        >
+                                            <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary={tag.created ? printTimePassed(tag.created) : "---"} />
+                                        </Tooltip>
                                     </Grid>
                                 </Grid>
                             ))}
