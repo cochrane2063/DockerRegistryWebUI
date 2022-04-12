@@ -2,9 +2,21 @@
     min-width: 100%
     margin: 0
     padding: 0
-    .wrapperAlwaysDisplayed, .wrapperWithCheckBox
+    .wrapperFlex
+        min-width: 100%
+        margin: 0
+        padding: 0
+        display: flex
+    .wrapperAlwaysDisplayed
         width: 70%
         margin: auto
+    .wrapperCollapsed
+        width: 70%
+        margin: auto 0
+    .wrapperWithCheckBox
+        width: 15%
+        margin: 0
+        margin: auto 0
     .repositoryDetail
         margin: 5%
         padding: 15px
@@ -55,5 +67,9 @@
 
 @media (max-width: 1199px)
     .repositoryInfo
-        .wrapperAlwaysDisplayed, .wrapperWithCheckBox
+        .wrapperAlwaysDisplayed
             width: 90%
+        .wrapperCollapsed
+            width: 90%
+        .wrapperWithCheckBox
+            width: 5%

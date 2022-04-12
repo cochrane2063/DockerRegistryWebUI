@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { ListItemButton, Button, Box, Card, CardContent, Typography, CardActions, Grid, List, ListItemText, Snackbar, Alert, Tooltip, Collapse } from "@mui/material";
+import { ListItemButton, Button, Box, Card, CardContent, Typography, CardActions, Grid, List, ListItemText, Snackbar, Alert, Tooltip, Collapse, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -186,68 +186,75 @@ const RepositoryInfo: React.FC = () => {
                     </Card>
                 </div>
                 <Collapse className="tagsDetail" in={showDetails}>
-                    {repository.tags.map((tag) => (
-                        <div className="wrapperWithCheckBox">  
-                            <Card className="tagCard" variant="outlined">
-                                <CardContent>
-                                    <Grid container>
-                                        <Grid item lg={6} md={12}>
-                                            <Typography className="lines" variant="h5" component="div" color="#94a1aa">
-                                                TAG
-                                            </Typography>
-                                            <Typography className="lines" variant="h5" component="div" color="#007bff">
-                                                {tag.label}
-                                            </Typography>
-                                            <Typography className="lines" sx={{ mb: 1.5 }}>
-                                                Last updated: <b>{(tag.created ? printTimePassed(tag.created) : "")}</b>
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item lg={6} md={12}>
-                                            <Box sx={{ display: "flex", flexDirection: "column" }}>
-                                                <Typography className="lines" variant="h6">
-                                                To pull this image,
-                                                </Typography>
-                                                <Box className="commandDisplay" onClick={() => (handlePullClick(tag.label))} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePullCommand(getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : ""),tag.label)}</Box>
-                                            </Box>
-                                        </Grid>
-                                        <Grid item lg={12} md={12}>
-                                            <Grid className="lines" container>
-                                                <Grid item sm={5}>
-                                                    <ListItemText primary="DIGEST" />
+                    <FormGroup>
+                        {repository.tags.map((tag) => (
+                            <div className="wrapperFlex">
+                                <div className="wrapperWithCheckBox">
+                                    <FormControlLabel control={<Checkbox />} name={tag.label} style={{display:'flex', justifyContent:'flex-end'}} label="" />
+                                </div>
+                                <div className="wrapperCollapsed">  
+                                    <Card className="tagCard" variant="outlined">
+                                        <CardContent>
+                                            <Grid container>
+                                                <Grid item lg={6} md={12}>
+                                                    <Typography className="lines" variant="h5" component="div" color="#94a1aa">
+                                                        TAG
+                                                    </Typography>
+                                                    <Typography className="lines" variant="h5" component="div" color="#007bff">
+                                                        {tag.label}
+                                                    </Typography>
+                                                    <Typography className="lines" sx={{ mb: 1.5 }}>
+                                                        Last updated: <b>{(tag.created ? printTimePassed(tag.created) : "")}</b>
+                                                    </Typography>
                                                 </Grid>
-                                                <Grid item sm={4}>
-                                                    <ListItemText primary="OS/ARCH" />
+                                                <Grid item lg={6} md={12}>
+                                                    <Box sx={{ display: "flex", flexDirection: "column" }}>
+                                                        <Typography className="lines" variant="h6">
+                                                        To pull this image,
+                                                        </Typography>
+                                                        <Box className="commandDisplay" onClick={() => (handlePullClick(tag.label))} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePullCommand(getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : ""),tag.label)}</Box>
+                                                    </Box>
                                                 </Grid>
-                                                <Grid item sm={3}>
-                                                    <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary="SIZE" />
-                                                </Grid>
-                                            </Grid>
-                                            
-                                            <List>
-                                                <ListItemButton 
-                                                    className="lines"
-                                                    component={Link}
-                                                    to={"/repository/" + repository.name + "/" + tag.label}
-                                                >
-                                                    <Grid container>
+                                                <Grid item lg={12} md={12}>
+                                                    <Grid className="lines" container>
                                                         <Grid item sm={5}>
-                                                            <ListItemText style={{color: '#007bff'}} primary={digestDisplay(tag.digest)} />
+                                                            <ListItemText primary="DIGEST" />
                                                         </Grid>
                                                         <Grid item sm={4}>
-                                                            <ListItemText primary={tag.os + "/" +tag.architecture} />
+                                                            <ListItemText primary="OS/ARCH" />
                                                         </Grid>
                                                         <Grid item sm={3}>
-                                                            <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary={tag.size ? printSize(tag.size) : "---"} />
+                                                            <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary="SIZE" />
                                                         </Grid>
                                                     </Grid>
-                                                </ListItemButton>
-                                            </List>
-                                        </Grid>
-                                    </Grid>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    ))}
+                                                    
+                                                    <List>
+                                                        <ListItemButton 
+                                                            className="lines"
+                                                            component={Link}
+                                                            to={"/repository/" + repository.name + "/" + tag.label}
+                                                        >
+                                                            <Grid container>
+                                                                <Grid item sm={5}>
+                                                                    <ListItemText style={{color: '#007bff'}} primary={digestDisplay(tag.digest)} />
+                                                                </Grid>
+                                                                <Grid item sm={4}>
+                                                                    <ListItemText primary={tag.os + "/" +tag.architecture} />
+                                                                </Grid>
+                                                                <Grid item sm={3}>
+                                                                    <ListItemText style={{display:'flex', justifyContent:'flex-end'}} primary={tag.size ? printSize(tag.size) : "---"} />
+                                                                </Grid>
+                                                            </Grid>
+                                                        </ListItemButton>
+                                                    </List>
+                                                </Grid>
+                                            </Grid>
+                                        </CardContent>
+                                    </Card>
+                                </div>
+                            </div>
+                        ))}
+                    </FormGroup>
                 </Collapse>
                 <Snackbar open={snackbarOpen} autoHideDuration={1500} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>

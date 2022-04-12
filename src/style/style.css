@@ -30,9 +30,29 @@ a {
   padding: 0;
 }
 
-.repositoryInfo .wrapperAlwaysDisplayed, .repositoryInfo .wrapperWithCheckBox {
+.repositoryInfo .wrapperFlex {
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.repositoryInfo .wrapperAlwaysDisplayed {
   width: 70%;
   margin: auto;
+}
+
+.repositoryInfo .wrapperCollapsed {
+  width: 70%;
+  margin: auto 0;
+}
+
+.repositoryInfo .wrapperWithCheckBox {
+  width: 15%;
+  margin: 0;
+  margin: auto 0;
 }
 
 .repositoryInfo .repositoryDetail {
@@ -111,8 +131,14 @@ a {
 }
 
 @media (max-width: 1199px) {
-  .repositoryInfo .wrapperAlwaysDisplayed, .repositoryInfo .wrapperWithCheckBox {
+  .repositoryInfo .wrapperAlwaysDisplayed {
     width: 90%;
+  }
+  .repositoryInfo .wrapperCollapsed {
+    width: 90%;
+  }
+  .repositoryInfo .wrapperWithCheckBox {
+    width: 5%;
   }
 }
 
