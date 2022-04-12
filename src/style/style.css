@@ -48,34 +48,60 @@ a {
   border-radius: 5px;
   padding: 0 15px;
   margin-top: 5px;
+  cursor: pointer;
 }
 
-.repositoryInfo .tagsDetail {
+.repositoryInfo .tagsOverview {
   margin: 5%;
-  padding: 15px;
+  padding: 0 15px;
 }
 
-.repositoryInfo .tagsDetail .iconWrapper {
+.repositoryInfo .tagsOverview .iconWrapper {
   height: 24px;
   width: 24px;
 }
 
-.repositoryInfo .tagsDetail .icon {
+.repositoryInfo .tagsOverview .icon {
   height: 24px;
   width: 24px;
 }
 
-.repositoryInfo .tagsDetail .lines {
-  margin-bottom: 10px;
+.repositoryInfo .tagsOverview .lines {
+  margin-top: 10px;
 }
 
-.repositoryInfo .tagsDetail .moreBtn {
+.repositoryInfo .tagsOverview .moreBtn {
+  margin-top: 10px;
   color: #1976d2;
   cursor: pointer;
 }
 
-.repositoryInfo .tagsDetail .moreBtn:focus {
+.repositoryInfo .tagsOverview .moreBtn:focus {
   color: purple;
+}
+
+.repositoryInfo .detailsCard {
+  margin: 0 5%;
+  padding: 0 15px;
+}
+
+.repositoryInfo .tagCard {
+  margin: 5%;
+  padding: 15px;
+}
+
+.repositoryInfo .tagCard .commandDisplay {
+  line-height: 200%;
+  border-radius: 5px;
+  padding: 0 15px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.repositoryInfo .tagCard .lines {
+  margin-top: 10px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (max-width: 1199px) {
