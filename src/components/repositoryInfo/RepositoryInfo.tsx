@@ -5,7 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import useRepositories from "../../hooks/useRepositories";
 import Tag from "../../interfaces/Tag";
 import Repository from "../../interfaces/Repositoriy";
-import { getHostNameFromURL, printSize, printTimePassed, PrintOSIcon, toUpperFirst } from "../../utils";
+import { getHostNameFromURL, printSize, printTimePassed, PrintOSIcon, toUpperFirst, printMonth } from "../../utils";
 import RepoNotFound from "./RepoNotFound"
 import Loading from "../Loading";
 
@@ -113,6 +113,7 @@ const RepositoryInfo: React.FC = () => {
                                     </Grid>
                                     <Grid item sm={3}>
                                         <Tooltip 
+                                            className="tooltip"
                                             title={
                                                 <>
                                                     <div>{"Operating System: " + toUpperFirst(tag.os)}</div>
@@ -131,8 +132,9 @@ const RepositoryInfo: React.FC = () => {
                                     </Grid>
                                     <Grid item sm={2}>
                                         <Tooltip 
+                                            className="tooltip"
                                             title={
-                                                tag.created ? (tag.created.toLocaleString()) : "---"
+                                                tag.created ? (printMonth(tag.created.getMonth()) + " " + tag.created.getDate() + ", " + tag.created.getFullYear() + " at " + tag.created.toLocaleTimeString().replace('.','').toUpperCase()) : "---"
                                             } 
                                             placement="bottom-end" 
                                             arrow

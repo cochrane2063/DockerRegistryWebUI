@@ -18,6 +18,24 @@ const checkValidURL = async (url: string) => {
     return true;
 }
 
+const printMonth = (month: number): string => {
+    switch (month) {
+        case 0:return "Jan";break;
+        case 1:return "Feb";break;
+        case 2:return "Mar";break;
+        case 3:return "Apr";break;
+        case 4:return "May";break;
+        case 5:return "Jun";break;
+        case 6:return "Jul";break;
+        case 7:return "Aug";break;
+        case 8:return "Sep";break;
+        case 9:return "Oct";break;
+        case 10:return "Nov";break;
+        case 11:return "Dec";break;
+        default:return "" + month;break;
+    }
+}
+
 const toUpperFirst= (s: string):string => {
     if (s.length > 0) {
         return s[0].toUpperCase() + s.substring(1);
@@ -75,4 +93,4 @@ const PrintOSIcon: React.FC<{ className: string, os: string }> = ({ className, o
     }
 }
 
-export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL, PrintOSIcon, toUpperFirst };
+export { checkValidURL, printTwoDecimalPlaces, printTimePassed, printSize, getHostNameFromURL, PrintOSIcon, toUpperFirst, printMonth };

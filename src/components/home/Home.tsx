@@ -3,11 +3,12 @@ import { List } from "@mui/material";
 import RepositoryItem from "./RepositoryEntry";
 import useRepositories from "../../hooks/useRepositories";
 import Repository from "../../interfaces/Repositoriy";
+import Loading from "../Loading";
 
 const Home: React.FC = () => {
-    const  { repositories } = useRepositories();
+    const  { isFetched, repositories } = useRepositories();
 
-    return(
+    return(isFetched ? (
         <div className="sectionHome">
             <List className="repositoryList" style={{ maxHeight: "100%", overflow: "auto" }}>
                 {repositories.map((repository: Repository) => {
@@ -17,7 +18,9 @@ const Home: React.FC = () => {
                 })}
             </List>
         </div>
-    );
+    ) : (
+        <Loading />
+    ));
 };
 
 export default Home;
