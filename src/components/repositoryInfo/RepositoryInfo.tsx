@@ -190,11 +190,34 @@ const RepositoryInfo: React.FC = () => {
                     </Card>
                 </div>
                 <Collapse className="tagsDetail" in={showDetails}>
-                    <FormGroup>
+                    <FormGroup>  
+                        <div className="wrapperFlex">
+                            <div className="wrapperWithCheckBox">
+                                <FormControlLabel control={<Checkbox />} name="allTags" style={{display:'flex', justifyContent:'flex-end'}} label="" />
+                            </div>
+                            <div className="wrapperCollapsed">  
+                                <Card className="tagSearchCard" variant="outlined">
+                                    <CardContent>
+                                        <Grid container>
+                                            <Grid item md={4}>
+                                                <Typography className="lines" variant="h5" component="div" color="#94a1aa">
+                                                    Sort
+                                                </Typography>
+                                            </Grid>
+                                            <Grid item md={8}>
+                                                <Typography className="lines" variant="h5" component="div" color="#94a1aa">
+                                                    Search
+                                                </Typography>
+                                            </Grid>
+                                        </Grid>
+                                    </CardContent>
+                                </Card>
+                            </div>
+                        </div>
                         {repository.tags.map((tag) => (
                             <div className="wrapperFlex">
                                 <div className="wrapperWithCheckBox">
-                                    <FormControlLabel control={<Checkbox />} name={tag.label} style={{display:'flex', justifyContent:'flex-end'}} label="" />
+                                    <FormControlLabel control={<Checkbox />} name={"tag-" + tag.label} style={{display:'flex', justifyContent:'flex-end'}} label="" />
                                 </div>
                                 <div className="wrapperCollapsed">  
                                     <Card className="tagCard" variant="outlined">
