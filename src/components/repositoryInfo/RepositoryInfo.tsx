@@ -1,15 +1,38 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { ListItemButton, Button, Box, Card, CardContent, Typography, CardActions, Grid, List, ListItemText, Snackbar, Alert, Tooltip, Collapse, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
+import { 
+    ListItemButton,
+    Button,
+    Box,
+    Card,
+    CardContent,
+    Typography,
+    CardActions,
+    Grid,
+    List,
+    ListItemText,
+    Snackbar,
+    Alert,
+    Tooltip,
+    Collapse,
+    FormGroup,
+    FormControlLabel,
+    Checkbox,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    TextField
+} from "@mui/material";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import SearchIcon from '@mui/icons-material/Search';
 import useRepositories from "../../hooks/useRepositories";
 import Tag from "../../interfaces/Tag";
-import Repository from "../../interfaces/Repositoriy";
 import { getHostNameFromURL, printSize, printTimePassed, PrintOSIcon, toUpperFirst, printMonth } from "../../utils";
 import RepoNotFound from "./RepoNotFound"
-import Loading from "../Loading";
+import Loading from "../UtilityComponents/Loading";
 import { digestDisplay } from "../../interfaces/Utils";
 
 const RepositoryInfo: React.FC = () => {
@@ -56,6 +79,10 @@ const RepositoryInfo: React.FC = () => {
     const toggleCollapse = () => {
         setShowDetails((prev) => !prev);
     };
+
+    const handleSortTags = () => {
+
+    }
     
     return (isFetched ? (
         repository ? (
@@ -198,16 +225,29 @@ const RepositoryInfo: React.FC = () => {
                             <div className="wrapperCollapsed">  
                                 <Card className="tagSearchCard" variant="outlined">
                                     <CardContent>
-                                        <Grid container>
-                                            <Grid item md={4}>
-                                                <Typography className="lines" variant="h5" component="div" color="#94a1aa">
-                                                    Sort
-                                                </Typography>
+                                        <Grid container style={{display:'flex', justifyContent:'space-between'}}>
+                                            <Grid item md={2}>
+                                                <FormControl fullWidth>
+                                                    <InputLabel id="tag-sort-label">Sort By </InputLabel>
+                                                    <Select
+                                                        labelId="tag-sort-label"
+                                                        id="tag-sort-select"
+                                                        value="Newest"
+                                                        label="Sort By"
+                                                        onChange={handleSortTags}
+                                                    >
+                                                        <MenuItem value="Newest">Newest</MenuItem>
+                                                        <MenuItem value="Oldest">Oldest</MenuItem>
+                                                        <MenuItem value="A-Z">A-Z"</MenuItem>
+                                                        <MenuItem value="Z-A">Z-A</MenuItem>
+                                                    </Select>
+                                                </FormControl>
                                             </Grid>
-                                            <Grid item md={8}>
-                                                <Typography className="lines" variant="h5" component="div" color="#94a1aa">
-                                                    Search
-                                                </Typography>
+                                            <Grid item md={6}>
+                                                <TextField id="outlined-search-tags" label="Search" variant="outlined" style={{display:'flex', justifyContent:'space-between'}} />
+                                            </Grid>
+                                            <Grid item md={2} style={{display:'flex', justifyContent:'flex-end'}}>
+                                                <Button>Delete</Button>
                                             </Grid>
                                         </Grid>
                                     </CardContent>

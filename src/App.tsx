@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CheckENVRoute from "./CheckENVRoute";
 import Home from "./components/home/Home";
 import Login from "./components/Login";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/UtilityComponents/NotFound";
 import RepositoryInfo from "./components/repositoryInfo/RepositoryInfo";
 import ProtectedRoute from "./ProtectedRoute";
 

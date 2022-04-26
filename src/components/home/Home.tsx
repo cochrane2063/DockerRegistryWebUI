@@ -3,7 +3,7 @@ import { List } from "@mui/material";
 import RepositoryItem from "./RepositoryEntry";
 import useRepositories from "../../hooks/useRepositories";
 import Repository from "../../interfaces/Repositoriy";
-import Loading from "../Loading";
+import Loading from "../UtilityComponents/Loading";
 
 const Home: React.FC = () => {
     const  { isFetched, repositories } = useRepositories();

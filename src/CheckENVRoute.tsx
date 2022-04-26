@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import ErrorENV from "./components/ErrorENV"
+import ErrorENV from "./components/UtilityComponents/ErrorENV"
 import React from "react";
 
 const CheckENVRoute: React.FC = () => {
