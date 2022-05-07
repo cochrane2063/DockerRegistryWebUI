@@ -1,6 +1,6 @@
 #version: "3"
 #services:
-#  digital-walkaround:
+#  registry-ui:
 #    image: 
 #    container_name: 
 #    ports:
