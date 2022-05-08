@@ -6,4 +6,6 @@ COPY ["package.json", "package-lock.json*", "./"]
 COPY . .
 ENV GENERATE_SOURCEMAP false
 RUN npm install
-CMD [ "npm", "run", "start-prod" ]
+RUN chmod +x run
+CMD ["/DockerRegistryWebUI/run"]
+#CMD [ "npm", "run", "start-prod" ]
