@@ -6,6 +6,6 @@ const axiosAlt = (url: string) => {
   })
 };
 
-export default axiosAlt(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : "");
+export default axiosAlt(process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : "");
 
 export { axiosAlt };

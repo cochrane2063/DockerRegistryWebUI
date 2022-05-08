@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
     };
 
     const handleClick = () => {
-      const url = process.env.REGISTRY_URL ? process.env.REGISTRY_URL : "";
+      const url = process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : "";
       navigator.clipboard.writeText(getHostNameFromURL(url));
       setSnackbarOpen(true);
     };
@@ -180,7 +180,7 @@ const NavBar: React.FC = () => {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: 'flex' }}>
-              <Typography onClick={handleClick} className="centerText" > Your registry instance is at {process.env.REGISTRY_URL ? process.env.REGISTRY_URL : ""} </Typography>
+              <Typography onClick={handleClick} className="centerText" > Your registry instance is at {process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : ""} </Typography>
             </Box>
 
             <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleClose}>

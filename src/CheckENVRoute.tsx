@@ -4,7 +4,7 @@ import React from "react";
 
 const CheckENVRoute: React.FC = () => {
 
-  return process.env.REGISTRY_URL ? (
+  return process.env.REACT_APP_REGISTRY_URL ? (
     <>
         <Outlet />
     </>

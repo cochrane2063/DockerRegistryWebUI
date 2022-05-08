@@ -53,13 +53,13 @@ const RepositoryInfo: React.FC = () => {
     }
 
     const handlePushClick = () => {
-        const hostName = getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : "");
+        const hostName = getHostNameFromURL(process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : "");
         navigator.clipboard.writeText(generatePushCommand(hostName,"tagname"));
         setSnackbarOpen(true);
     };
 
     const handlePullClick = (tagName: string) => {
-        const hostName = getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : "");
+        const hostName = getHostNameFromURL(process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : "");
         navigator.clipboard.writeText(generatePullCommand(hostName,tagName));
         setSnackbarOpen(true);
     };
@@ -111,7 +111,7 @@ const RepositoryInfo: React.FC = () => {
                                         <Typography className="lines" variant="body2">
                                             To push a new tag to this repository,
                                         </Typography>
-                                        <Box className="commandDisplay" onClick={handlePushClick} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePushCommand(getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : ""),"tagname")}</Box>
+                                        <Box className="commandDisplay" onClick={handlePushClick} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePushCommand(getHostNameFromURL(process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : ""),"tagname")}</Box>
                                     </Box>
                                 </Grid>
                             </Grid>
@@ -279,7 +279,7 @@ const RepositoryInfo: React.FC = () => {
                                                         <Typography className="lines" variant="h6">
                                                         To pull this image,
                                                         </Typography>
-                                                        <Box className="commandDisplay" onClick={() => (handlePullClick(tag.label))} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePullCommand(getHostNameFromURL(process.env.REGISTRY_URL ? process.env.REGISTRY_URL : ""),tag.label)}</Box>
+                                                        <Box className="commandDisplay" onClick={() => (handlePullClick(tag.label))} component="span" sx={{ display: 'block', bgcolor: '#445d6e', color: 'white', borderColor: '#445d6e' }}>{generatePullCommand(getHostNameFromURL(process.env.REACT_APP_REGISTRY_URL ? process.env.REACT_APP_REGISTRY_URL : ""),tag.label)}</Box>
                                                     </Box>
                                                 </Grid>
                                                 <Grid item lg={12} md={12}>
