@@ -16,6 +16,10 @@ if [ $# -ne 0 ]; then
   done
 fi
 
+# copy example production.env
+
+cp example/env/production.env env/production.env
+
 echo "===> ENV Variables ..."
 env | sort
 
