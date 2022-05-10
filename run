@@ -17,8 +17,9 @@ if [ $# -ne 0 ]; then
 fi
 
 # copy example production.env
-
-cp examples/env/production.env env/production.env
+if [ ! -f "env/production.env" ]; then
+  cp examples/env/production.env env/production.env
+fi
 
 echo "===> ENV Variables ..."
 env | sort
